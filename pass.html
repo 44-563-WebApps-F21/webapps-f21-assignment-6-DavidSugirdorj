@@ -22,9 +22,16 @@
     </form>
 
     <p id="result">Checking Phrase Result</p>
+
+    <div class="flex-container" id="pic">
+        <img id="rabbit-image" width="200" ; height="200" ; alt="rabbit-image" ; src="rabbit.jpg" ;
+            onclick="newImage(this.src)"></img>
+    </div>
+
     <script>
         var correct = 0;
         var wrong = 0;
+        var usingImage = 1;
 
         function processPhrase() {
             console.log("Getting form values");
@@ -49,11 +56,20 @@
                     "Password Wrong! Total correct: " + correct + " and wrong " + wrong;
             }
         }
-        <div class="container" id="pic" >
-            <img id="rabbit-image" width="200" height="200" alt="rabbit-image" src="rabbit.jpg"></img>
 
+        function newImage() {
+            switch (usingImage) {
+                case 1: document.getElementById("rabbit-image").src = "rabbit.jpg"
+                    usingImage = 2;
+                    break;
+                case 2: document.getElementById("rabbit-image").src = "owl.jpg"
+                    usingImage = 3;
+                    break;
+                case 3: document.getElementById("rabbit-image").src = "jellyfish.jpg"
+                    usingImage = 1;
+            }
+        }
 
-        </div>;
     </script>
 </body>
 
