@@ -12,7 +12,7 @@
 
 <body>
 
-    <h2>Getting input</h2>
+    <h2>Getting input for computation</h2>
 
     <form>
         <label for="Enter a base">Enter a base value</label>
@@ -24,20 +24,60 @@
         <input type="button" onclick="powers()" value="Compute">
     </form>
 
+    <form>
+        <label for="+">+</label>
+        <input type="radio" id="+" value="plus" onclick="processRadio()"> <br>
+
+        <label for="-">-</label>
+        <input type="radio" id="-" value="minus" onclick="processRadio()"> <br>
+
+        <label for="*">*</label>
+        <input type="radio" id="*" value="times" onclick="processRadio()"> <br>
+
+        <label for="/">/</label>
+        <input type="radio" id="/" value="divide" onclick="processRadio()"> <br>
+    </form>
+
+    <p id="radio_result">Radio result here!</p>
+
 
     <p id="result">Here's the results! </p>
 
     <script>
+        var operator = 1;
+
+        function processRadio() {
+            console.log("getting values from radio")
+            base = document.getElementById("base_num").value
+            exp = document.getElementById("exp_num").value
+
+            if (document.getElementById("+").checked) {
+                result = Number(base) + Number(exp)
+            }
+            if (document.getElementById("-").checked) {
+                result = Number(base) - Number(exp)
+            }
+            if (document.getElementById("*").checked) {
+                result = Number(base) * Number(exp)
+            }
+            if (document.getElementById("/").checked) {
+                result = Number(base) / Number(exp)
+            }
+
+            document.getElementById("radio_result").innerHTML = ("Result of the computation is: " + result);
+
+        }
+
         function powers() {
             console.log("getting values from input")
             base = document.getElementById("base_num").value
             exp = document.getElementById("exp_num").value
-            let x = 1;
+            let x = "";
 
             for (let i = 1; i <= exp; i++) {
-                x *= base;
+                x = x + (Math.pow(base, i) + ", ");
+                document.getElementById("result").innerHTML = "Powers of " + base + " are: " + x + " (Exponent was: " + exp + ")";
             }
-            document.getElementById("result").innerHTML = "Powers of " + base + " are: " + x + " (Exponent was: " + exp + ")";
         }
     </script>
 
