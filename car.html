@@ -30,22 +30,31 @@
     <p id="result">Order will be shown </p>
 
     <script>
-        var my_car = "";
+        var my_car = {};
 
         function orderCar() {
-            let my_car = "";
+            let my_car = {};
 
             if (document.getElementById("electric").checked) {
-                my_car = my_car + "My car is electric. "
+                my_car.electric = true;
+            }
+            else {
+                my_car.electric = false;
             }
             if (document.getElementById("ac").checked) {
-                my_car = my_car + "My car has ac. "
+                my_car.ac = true;
+            }
+            else {
+                my_car.ac = false;
             }
             if (document.getElementById("gps").checked) {
-                my_car = my_car + "My car has gps. "
+                my_car.gps = true;
+            }
+            else {
+                my_car.gps = false;
             }
 
-            out = document.getElementById("result").innerHTML = my_car;
+            out = document.getElementById("result").innerHTML = JSON.stringify(my_car);
 
 
         }
