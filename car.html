@@ -27,13 +27,33 @@
         <input type="button" onclick="orderCar()" value="Order a car.">
     </form>
 
+    <form>
+        <label for="property">Enter a property</label>
+        <input type="text" id="property" value="color">
+
+        <label for="value">Enter a value</label>
+        <input type="text" id="value">
+
+        <input type="button" onclick="updateCar()" value="Update the car">
+    </form>
+
     <p id="result">Order will be shown </p>
+
 
     <script>
         var my_car = {};
 
+        function updateCar() {
+            property = document.getElementById("property").value;
+            value = document.getElementById("value").value;
+
+            my_car[property] = value;
+
+            out = document.getElementById("result").innerHTML = JSON.stringify(my_car);
+        }
+
         function orderCar() {
-            let my_car = {};
+            my_car = {};
 
             if (document.getElementById("electric").checked) {
                 my_car.electric = true;
@@ -55,8 +75,6 @@
             }
 
             out = document.getElementById("result").innerHTML = JSON.stringify(my_car);
-
-
         }
     </script>
 
